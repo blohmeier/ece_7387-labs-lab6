@@ -5,9 +5,9 @@
 // Noutputs 2
 // NtotalGates 6
 // NAND2 6
-module c17(N1,N2,N3,N6,N7,N22,N23);
+module c17(clk,N1,N2,N3,N6,N7,N22,N23);
 
-input N1,N2,N3,N6,N7;
+input clk,N1,N2,N3,N6,N7;
 
 output N22,N23;
 
