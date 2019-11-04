@@ -4,9 +4,9 @@
 module c17_tb();
 reg clk;
 reg N1,N2,N3,N6,N7;
-wire N10,N11,N16,N19;
+wire N22,N23;
 
-c17 U1(.clk(clk),.N1(N1),.N2(N2),.N3(N3),.N6(N6),.N7(N7));
+c17 U1(.clk(clk),.N1(N1),.N2(N2),.N3(N3),.N6(N6),.N7(N7),.N22(N22),.N23(N23));
 initial // initial block executes only once
     begin
     clk=0;
