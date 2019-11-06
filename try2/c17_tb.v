@@ -2,21 +2,17 @@
 
 module c17_tb;
         reg N1,N2,N3,N6,N7;
-        wire N22,N23;
+        wire N22,N23,N10,N11,N16,N19;
 
-        //parameter clkFreq=40; // 40 MHz clock frequency
-        //parameter clkPd = 1 / clkFreq; //25ns period (for 40 MHz)
-        
         reg clk;
- 
-    always
-        #5 clk = !clk;
-        /*begin : CLOCK
-            #(clkPd * 0.20) clk = 0;
-            #(clkPd * 0.80) clk = 1;
-        end*/
 
-c17 U1 (.N1(N1),.N2(N2),.N3(N3),.N6(N6),.N7(N7),.N22(N22),.N23(N23));
+c17 U1 (N1,N2,N3,N6,N7,N22,N23);
+
+initial clk = 0;
+always begin
+    #2 clk = 1;
+    #8 clk = 0;
+ end
 
 initial // initial block executes only once
     begin
