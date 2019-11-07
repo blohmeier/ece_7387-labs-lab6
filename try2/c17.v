@@ -21,7 +21,7 @@ nand NAND2_6 (N23, N16, N19);
 
 // Single stage pipeline (at inputs and outputs)
 wire N1b,N3b1,N3b2,N6b,N2b,N7b;
-wire din,r,s,dOut;
+//wire d,q;
 
 nand NAND2_1 (N10, N1b, N3b1);
 nand NAND2_2 (N11, N3b2, N6b);
@@ -31,15 +31,22 @@ nand NAND2_5 (N22, N10, N16);
 nand NAND2_6 (N23, N16, N19);
 
 // Register inputs to NAND2_1
-Dff_ U2 (.clk(clk),.dIn(N1),.r(r),.s(s),.dOut(N1b));
-Dff_ U3 (.clk(clk),.dIn(N3),.r(r),.s(s),.dOut(N3b1));
+Dff_ U2 (.clk(clk),.d(N1),.q(N1b));
+Dff_ U3 (.clk(clk),.d(N3),.q(N3b1));
 // Register inputs to NAND2_2
-Dff_ U4 (.clk(clk),.dIn(N3),.r(r),.s(s),.dOut(N3b2));
-Dff_ U5 (.clk(clk),.dIn(N6),.r(r),.s(s),.dOut(N6b));
+Dff_ U4 (.clk(clk),.d(N3),.q(N3b2));
+Dff_ U5 (.clk(clk),.d(N6),.q(N6b));
 // Register input to NAND2_3
-Dff_ U6 (.clk(clk),.dIn(N2),.r(r),.s(s),.dOut(N2b));
+Dff_ U6 (.clk(clk),.d(N2),.q(N2b));
 // Register input to NAND2_4
-Dff_ U7 (.clk(clk),.dIn(N7),.r(r),.s(s),.dOut(N7b));
+Dff_ U7 (.clk(clk),.d(N7),.q(N7b));
+
+always @(posedge clk)
+begin
+    if (r) q_reg <= 1'b0;
+    else if (!s) q_reg <= 1'b1;
+    else q_reg <= d;
+end
 
 // Two pipeline stages (additionally at wires N10 and N11)
 /*
