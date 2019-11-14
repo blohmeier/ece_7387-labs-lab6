@@ -12,22 +12,20 @@ always begin
 end
 
 //For Design 1 (No pipelining):
-/*
 wire N22,N23;
 c17 U1 (N1,N2,N3,N6,N7,N22,N23);
-*/
 
 // For Designs 2-3:
+/*
 wire N22q,N23q;
 c17 U1 (N1,N2,N3,N6,N7,N22q,N23q,clk);
+*/
 
 // For Design 4 of 4 - Three pipeline stages (at wires N16, N19, and a second at output N23):
 /*
-wire N22q,N23q2;
-reg clk;
-c17 U1 (N1,N2,N3,N6,N7,N22q,N23q2,clk);
+wire N22,N23;
+c17 U1 (N1,N2,N3,N6,N7,N22,N23,clk);
 */
-
 initial // initial block executes only once
     begin
     #0.5;
