@@ -1,8 +1,6 @@
 `timescale 1ns / 1ps
 
 //Design 1 of 4 - No pipelining 
-/*
-*/
 
 module c17 (N1,N2,N3,N6,N7,N22,N23);
 input N1,N2,N3,N6,N7;
@@ -14,6 +12,7 @@ nand NAND2_3 (N16, N2, N11);
 nand NAND2_4 (N19, N11, N7);
 nand NAND2_5 (N22, N10, N16);
 nand NAND2_6 (N23, N16, N19);
+
 
 //Design 2 of 4 - Single stage pipeline (at inputs and outputs)
 /*
